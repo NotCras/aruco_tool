@@ -44,7 +44,7 @@ class PoseDetector:
         """
         Returns calculates poses for the given ArucoCorner object
         """
-        
+        # TODO: add modes so we can cycle between different implementations to what we need
         # pre-allocate the numpy array space
         data_len = self.aruco_corner.data_len
 
@@ -93,6 +93,14 @@ class PoseDetector:
             pose_data[i] = row_data
 
         return np.around(pose_data, decimals=3)
+
+
+    def _abs_pose_process():
+        pass
+
+
+    def _rel_pose_process():
+        pass
 
 
     def _calc_single_pose(self, corner_set):

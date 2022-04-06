@@ -22,6 +22,10 @@ class ArucoLoc:
         #self.corners_df = self.get_corners_df(corners)
 
 
+    def is_subloc():
+        return False
+
+
     def yield_poses(self):
         """
         Yields each row of poses, as a numpy array 
