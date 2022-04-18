@@ -99,7 +99,7 @@ class ArucoHelper:
     
 
     @staticmethod
-    def camera_calibrate(folder_loc):
+    def camera_calibrate(folder_loc, show_images=False):
         """Helper script that runs camera calibration for opencv.
 
         Args:
@@ -114,7 +114,6 @@ class ArucoHelper:
         objpoints = []
         # Creating vector to store vectors of 2D points for each checkerboard image
         imgpoints = [] 
-
 
         # Defining the world coordinates for 3D points
         objp = np.zeros((1, CHECKERBOARD[0] * CHECKERBOARD[1], 3), np.float32)
@@ -143,12 +142,15 @@ class ArucoHelper:
                 imgpoints.append(corners2)
 
                 # Draw and display the corners
-                img = cv2.drawChessboardCorners(img, CHECKERBOARD, corners2, ret)
+                if show_images:
+                    img = cv2.drawChessboardCorners(img, CHECKERBOARD, corners2, ret)
             
-            cv2.imshow('img',img)
-            cv2.waitKey(0)
+            if show_images:
+                cv2.imshow('img',img)
+                cv2.waitKey(0)
 
-        cv2.destroyAllWindows()
+        if show_images:
+            cv2.destroyAllWindows()
 
         h,w = img.shape[:2]
 

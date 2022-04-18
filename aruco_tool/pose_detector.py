@@ -157,6 +157,7 @@ class PoseDetector:
         # # original
         #return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
 
+
     def _relative_position(self, rvec1, tvec1, rvec2, tvec2):
         rvec1, tvec1 = np.expand_dims(rvec1.squeeze(),1), np.expand_dims(tvec1.squeeze(),1)
         rvec2, tvec2 = np.expand_dims(rvec2.squeeze(),1), np.expand_dims(tvec2.squeeze(),1)
@@ -171,6 +172,7 @@ class PoseDetector:
         composedTvec = composedTvec.reshape((3, 1))
 
         return composedRvec, composedTvec
+        
 
     def _inverse_perspective(self, rvec, tvec):
         """
