@@ -122,7 +122,7 @@ class CornerFinder:
                 print(e)
 
         # change directory so we can continue in terminal
-        os.chdir(self.home_directory)
+        os.chdir(self.home_directory)  # TODO: is this messing things up?
 
         return files
 

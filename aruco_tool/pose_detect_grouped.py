@@ -9,4 +9,4 @@ from .aruco_subloc import ArucoSubLoc
 
 
 class GroupedPoseDetector:
-    pass 
+    pass
