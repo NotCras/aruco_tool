@@ -53,7 +53,7 @@ class ArucoLoc:
             new_file_name = file_name + ".csv"
 
         else:
-            new_file_name = str(file_name_overwrite) + ".csv"
+            new_file_name = file_name_overwrite + ".csv"
 
         data.to_csv(new_file_name, index=True)
         # print(f"CSV File generated with name: {new_file_name}")

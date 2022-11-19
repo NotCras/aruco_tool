@@ -137,18 +137,22 @@ class CornerFinder:
         bboxs, ids, rejected = aruco.detectMarkers(gray, ar_dict, parameters = ar_params)
 
         id_data = dict()
-        for id, box in zip(ids, bboxs):
-            if desired_ids is not None and id in desired_ids:
-                id_data[id[0]] = box[0]
-            if desired_ids is None:
-                id_data[id[0]] = box[0]
+        # sometimes a jpg might be corrupted
+        try:
+            for id, box in zip(ids, bboxs):
+                if desired_ids is not None and id in desired_ids:
+                    id_data[id[0]] = box[0]
+                if desired_ids is None:
+                    id_data[id[0]] = box[0]
 
         # double check that all desired ids are accounted for
-        if desired_ids is not None:
-            for idd in desired_ids:
-                if idd not in id_data.keys():
-                    id_data[idd] = np.array([[np.nan, np.nan], [np.nan, np.nan], [np.nan, np.nan], [np.nan, np.nan]])
+            if desired_ids is not None:
+                for idd in desired_ids:
+                    if idd not in id_data.keys():
+                        id_data[idd] = np.array([[np.nan, np.nan], [np.nan, np.nan], [np.nan, np.nan], [np.nan, np.nan]])
         
+        except TypeError:
+            id_data = None
         # if it doesn't find any desired ids, return None
         # if not id_data:
         #     id_data = None
